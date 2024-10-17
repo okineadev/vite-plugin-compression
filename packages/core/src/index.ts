@@ -218,10 +218,7 @@ function handleOutputLogger(
   compressMap.forEach((value, name) => {
     const { size, oldSize, cname } = value
 
-    const rName = normalizePath(cname).replace(
-      normalizePath(`${config.build.outDir}/`),
-      '',
-    )
+    const rName = path.relative(config.build.outDir, cname);
 
     const sizeStr = `${oldSize.toFixed(2)}kb / ${algorithm}: ${size.toFixed(
       2,
